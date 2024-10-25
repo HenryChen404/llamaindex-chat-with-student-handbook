@@ -14,7 +14,7 @@ st.markdown("""
     <style>
         /* 主背景颜色 */
         .stApp {
-            background-color: #0E1117;
+            background-color: #C0C0C0;
         }
         
         /* 卡片样式 - 更浅的背景色 */
