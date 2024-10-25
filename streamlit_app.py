@@ -14,7 +14,7 @@ st.markdown("""
     <style>
         /* 主背景颜色 */
         .stApp {
-            background-color: #F0F0F0;
+            background-color: #0E1117;
         }
         
         /* 卡片样式 - 更浅的背景色 */
@@ -127,6 +127,34 @@ st.markdown("""
         
         /* 日期更新时间文字 */
         em {
+            color: #FFFFFF !important;
+        }/* 聊天消息样式 */
+        .stChatMessage {
+            background-color: #262B3D !important;
+        }
+        
+        /* 聊天消息中的文字颜色 */
+        .stChatMessage p,
+        .stChatMessage span,
+        .stMarkdown p,
+        .stMarkdown span,
+        div[data-testid="stChatMessageContent"] {
+            color: #FFFFFF !important;
+        }
+        
+        /* 用户和助手的消息容器 */
+        .stChatMessageContent {
+            background-color: #363C4F !important;
+            color: #FFFFFF !important;
+        }
+        
+        /* 确保所有嵌套内容都是白色 */
+        .stChatMessageContent * {
+            color: #FFFFFF !important;
+        }
+        
+        /* 保持输入框文字颜色 */
+        .stTextInput input {
             color: #FFFFFF !important;
         }
     </style>
