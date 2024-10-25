@@ -1,9 +1,9 @@
-
 from openai import OpenAI
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from tenacity import retry, wait_random_exponential, stop_after_attempt
 import os
+
 @retry(wait=wait_random_exponential(multiplier=1, max=40), stop=stop_after_attempt(5))
 def chat_completion_request(client, messages, model="gpt-4o",
                             **kwargs):
@@ -35,8 +35,7 @@ class Copilot:
         self.llm_client = OpenAI(api_key = key)
         
         self.system_prompt = """
-            You are an expert on Columbia University and your job is to answer questions 
-            about the university.
+            You are an expert on Li Auto's financial matrix and your job is to answer questions only related to Li Auto based on user's prompt. If the promt has nothing to do with Li Auto, you should not answer and ask the user to ask a related question instead.
         """
 
     def ask(self, question, messages):
@@ -51,10 +50,10 @@ class Copilot:
 
             The retrived information is: {retrieved_info}
 
-            Please answer the question based on the retrieved information. If the question is not related to Columbia University, 
-            please tell the user and ask for a question related to Columbia University.
+            Please answer questions follow the retrieved informations. If the question is not related to Li Auto, 
+            please tell the user and ask for a question related to Li Auto.
 
-            Please highlight the information with bold text and bullet points.
+            Please format your response in professional finance and banking format.
         """
         
         processed_query = processed_query_prompt.format(question=question, 
